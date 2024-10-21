@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Instagram App</title>
+</head>
+<body>
+    <h1>Open Instagram App</h1>
+
+    <!-- Button to open Instagram -->
+    <a href="instagram://user?username=daisy2kk" id="openInstagram">Open Instagram</a>
+
+    <script>
+        // Fallback for when the app isn't installed
+        document.getElementById('openInstagram').addEventListener('click', function (event) {
+            setTimeout(function () {
+                window.location = 'https://www.instagram.com/daisy2kk'; // Fallback URL
+            }, 1000); // Adjust delay to give the app time to open
+        });
+    </script>
+</body>
+</html>
