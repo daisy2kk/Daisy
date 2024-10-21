@@ -4,19 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Instagram App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f5f5f5; /* Light background color */
+        }
+        h1 {
+            color: #333; /* Dark text color */
+        }
+        #openInstagram {
+            display: inline-block;
+            padding: 15px 30px; /* Top/bottom and left/right padding */
+            font-size: 16px; /* Font size */
+            color: white; /* Text color */
+            background-color: #C13584; /* Instagram gradient color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* No underline */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+        #openInstagram:hover {
+            background-color: #e1306c; /* Slightly darker color on hover */
+        }
+    </style>
 </head>
 <body>
     <h1>Open Instagram App</h1>
 
     <!-- Button to open Instagram -->
-    <a href="instagram://user?username=daisy2kk" id="openInstagram">Open Instagram</a>
+    <a href="#" id="openInstagram">Open Instagram</a>
 
     <script>
-        // Fallback for when the app isn't installed
         document.getElementById('openInstagram').addEventListener('click', function (event) {
+            event.preventDefault();
+            var now = new Date().getTime();
+            // Attempt to open the Instagram app
+            window.location = 'instagram://user?username=daisy2kk';
+
+            // Fallback to web after 1500ms if app is not opened
             setTimeout(function () {
-                window.location = 'https://www.instagram.com/daisy2kk'; // Fallback URL
-            }, 1000); // Adjust delay to give the app time to open
+                var elapsedTime = new Date().getTime() - now;
+                if (elapsedTime < 1500) {
+                    window.location = 'https://www.instagram.com/daisy2kk';
+                }
+            }, 1500);
         });
     </script>
 </body>
